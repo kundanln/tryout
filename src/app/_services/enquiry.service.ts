@@ -17,19 +17,19 @@ export class EnquiryService {
     getAll() {
 
         // Make the GET HTTP request:
-        return this._http.get(this._baseService.BaseUrl() + "/getAll");
+        return this._http.get(this._baseService.BaseUrl() + "/enquiry/getAll");
         // return this._http.get<User[]>('/api/users');
 
     }
     getById(id: number) {
-        return this._http.get(this._baseService.BaseUrl() + "/getById/id/" + id);
+        return this._http.get(this._baseService.BaseUrl() + "/enquiry/getById/id/" + id);
     }
     create(enquiry: Enquiry) {
 
-        return this._http.post(this._baseService.BaseUrl() + '/add', enquiry);
+        return this._http.post(this._baseService.BaseUrl() + '/enquiry/add', enquiry);
     }
     update(enquiry: Enquiry) {
         //console.log("at enquiry service ",enquiry);
-        return this._http.put(this._baseService.BaseUrl() + '/update/id/' + enquiry.enqId, enquiry);
+        return this._http.put(this._baseService.BaseUrl() + '/enquiry/update/id/' + enquiry.enqId, enquiry);
     }
 }
