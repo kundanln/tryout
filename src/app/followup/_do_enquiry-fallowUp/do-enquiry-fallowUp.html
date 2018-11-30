@@ -1,0 +1,101 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        <div class="col-md-12  col-md-offset-0">
+            <form #modelForm="ngForm" class="form-horizontal" (ngSubmit)="AddEnquiryFalllowUp()">
+                <fieldset>
+                    <!-- Form Name -->
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Enquiry Fallow Up</h3>
+                        <div class="box-tools pull-right">
+                            <span>
+                                <a [routerLink]="['/home']">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Text Area input-->
+                    <div class="row" style="margin-left: -26px;">
+                        <div class="form-group " [class.has-error]="comment.invalid && comment.touched" [class.has-success]="comment.valid">
+                            <label class="col-md-3 control-label" for="comment">Today Comment</label>
+                            <div class="col-md-7">
+                                <textarea class="form-control" id="comment" name="comment" [(ngModel)]="model.comment" placeholder="Write Comment Here" #comment="ngModel"
+                                    required></textarea>
+                            </div>
+                            <span class="help-block" *ngIf="comment.invalid && comment.touched">
+                                Comment Is Required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Date input-->
+                        <div class="form-group col-md-6" [class.has-error]="nextFallowUp.invalid && nextFallowUp.touched" [class.has-success]="nextFallowUp.valid">
+                            <label class="col-md-6 control-label" for="nextFallowUp">Next Fallow Up Date </label>
+                            <div class="col-md-6">
+                                <input id="nextFallowUp" name="nextFallowUp" type="text" bsDatepicker [(ngModel)]="model.nextFallowUp" class="form-control input-md"
+                                    [bsConfig]="datePickerConfig" placement="right" placeholder="Enter Next FallowUp Date" required
+                                    #nextFallowUp="ngModel">
+                                <span class="help-block" *ngIf="nextFallowUp.invalid && nextFallowUp.touched">
+                                    Date Is Required
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- checkbox input-->
+                        <div class="form-group col-md-6">
+                            <label class="col-md-6 control-label" for="checkboxes">Freez Enquiry</label>
+                            <div class="col-md-6">
+                                <label class="checkbox-inline" for="freezEnquery">
+                                    <input type="checkbox" name="freezEnquery" id="freezEnquery" value="true" [(ngModel)]="model.freezEnquery"> Yes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-4">
+                            <button type="submit" title="Submit" class="btn btn-primary" [disabled]="modelForm.invalid">Submit</button>&nbsp;
+                            <button type="reset" title="Clear" class="btn btn-danger">Clear</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-12  col-md-offset-0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Previous Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let comments of dateWiseComentList">
+                                    <tr>
+                                        <td> {{ comments.followUpActualDate | date }} </td>
+                                        <td> {{ comments.comment }} </td>
+                                    </tr>
+                                </ng-container>
+                                <tr *ngIf="!dateWiseComentList">
+                                    <td colspan="2">
+                                        Loading data please Wait...
+                                    </td>
+                                </tr>
+                                <tr *ngIf="dateWiseComentList && dateWiseComentList.length==0">
+                                    <td colspan="2">No comments to display </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

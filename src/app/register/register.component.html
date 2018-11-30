@@ -1,0 +1,263 @@
+﻿     <br>
+     <div class="container">
+        
+        <div class="panel panel-default col-md-offset-2">
+          <div class="panel-body" style="background-color:#3c8dbc;">
+            <i class="fa fa-users" aria-hidden="true"></i> Class Room Management
+          </div>
+
+        </div>
+    </div>   
+
+<div class="container">
+    <div class="panel panel-default col-md-offset-2">
+      <div class="panel-body">
+
+
+<div class="col-md-12">
+   <!-- <h3>Registration</h3>-->
+    <form name="form" #modelForm="ngForm" class="form-horizontal" (ngSubmit)="register()" novalidate>
+        <h4 style="margin-left: 50px;"><i class="fa fa-user" aria-hidden="true"></i> Registration</h4>
+       
+       
+        <!-- <div class="form-group" [class.has-error]="userType.invalid && userType.touched" [class.has-success]="userType.valid">
+            <label class="col-md-4 control-label" for="userType">Type</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                         <input id="userType" name="userType" type="text" [(ngModel)]="model.userType" placeholder="Selet userType" class="form-control input-md"
+                        #userType="ngModel" required>
+                    </div>
+                <span class="help-block" *ngIf="userType.invalid && userType.touched">
+                        UserType Is Required
+                </span>
+              
+            </div>
+           
+        </div> -->
+       
+       
+       
+       
+       
+        <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched" [class.has-success]="firstName.valid">
+            <label class="col-md-4 control-label" for="firstName">First Name</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                <input id="firstName" name="firstName" type="text" [(ngModel)]="model.firstName" placeholder="Enter First Name" class="form-control input-md"
+                    #firstName="ngModel" required>
+                </div>
+                <span class="help-block" *ngIf="firstName.invalid && firstName.touched">
+                        First Name Is Required
+                </span>
+              
+            </div>
+           
+        </div>
+
+        <div class="form-group" [class.has-error]="middleName.invalid && middleName.touched" [class.has-success]="middleName.valid">
+            <label class="col-md-4 control-label" for="middleName">Middle Name</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                <input id="middleName" name="middleName" type="text" [(ngModel)]="model.middleName" placeholder="Enter Middle Name" class="form-control input-md"
+                    #middleName="ngModel" required>
+                </div> 
+                    <span class="help-block" *ngIf="middleName.invalid && middleName.touched">
+                        Middle Name Is Required
+                    </span>
+                    
+            </div>
+            
+
+        </div>
+
+        <div class="form-group" [class.has-error]="lastName.invalid && lastName.touched" [class.has-success]="lastName.valid">
+            <label class="col-md-4 control-label" for="lastName">Last Name</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </div>
+                <input id="lastName" name="lastName" type="text" [(ngModel)]="model.lastName" placeholder="Enter Last Name" class="form-control input-md"
+                    #lastName="ngModel" required>
+                    </div>
+                    <span class="help-block" *ngIf="lastName.invalid && lastName.touched">
+                        Last Name Is Required
+                    </span>
+                    
+            </div>
+           
+        </div>
+
+        <div class="form-group" [class.has-error]="birthDate.invalid && birthDate.touched" [class.has-success]="birthDate.valid">
+            <label class="col-md-4 control-label" for="birthDate">Date Of Birth</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-birthday-cake " aria-hidden="true"></i>
+                            </div>
+                <input id="birthDate" name="birthDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right" [(ngModel)]="model.birthDate"
+                    placeholder="Select Date YYYY/MM/DD" class="form-control input-md" required #birthDate="ngModel">
+             </div>
+                    <span class="help-block" *ngIf="birthDate.invalid && birthDate.touched">
+                        Date Is Required
+                    </span>
+              </div>
+           
+        </div>
+
+        <div class="form-group" [class.has-error]="mobileNumber.invalid && mobileNumber.touched" [class.has-success]="mobileNumber.valid">
+            <label class="col-md-4 control-label" for="mobileNumber">Mobile Number</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-mobile" aria-hidden="true"></i>
+                            </div>
+                <input id="mobileNumber" name="mobileNumber" type="text" [(ngModel)]="model.mobileNumber" placeholder="Enter Mobile Number"
+                    class="form-control input-md" pattern="^((\\+91-?)|0)?[0-9]{10}$" maxlength="10" minlength="10" required #mobileNumber="ngModel">
+                    </div>
+
+                    <span class="help-block" *ngIf="mobileNumber.errors?.required && mobileNumber.touched">
+                        Mobile Number Is Required
+                    </span>
+                    <span class="help-block" *ngIf="mobileNumber.errors?.minlength && mobileNumber.touched">
+                        Not Less Than 10 Digit
+                    </span>
+                    <span class="help-block" *ngIf="mobileNumber.errors?.pattern && mobileNumber.touched">
+                        Only Number Is Required
+                    </span>
+            
+            </div>
+        </div>
+        <div class="form-group" [class.has-error]="dateOfJoining.invalid && dateOfJoining.touched" [class.has-success]="dateOfJoining.valid">
+            <label class="col-md-4 control-label" for="dateOfJoining">Date Of Joining</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </div>
+                <input id="dateOfJoining" name="dateOfJoining" type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right" [(ngModel)]="model.dateOfJoining"
+                    placeholder="Select Date YYYY/MM/DD" class="form-control input-md" required #dateOfJoining="ngModel">
+                </div>
+                    <span class="help-block" *ngIf="dateOfJoining.invalid && dateOfJoining.touched">
+                        Date Is Required
+                    </span>
+            
+        </div>
+        </div>
+        <div class="form-group" [class.has-error]="address.invalid && address.touched" [class.has-success]="address.valid">
+            <label class="col-md-4 control-label" for="address">Address</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                            </div>
+                <input id="address" name="address" type="text" [(ngModel)]="model.address" placeholder="Enter Address" class="form-control input-md"
+                    #address="ngModel" required>
+                    </div>
+                    <span class="help-block" *ngIf="address.invalid && address.touched">
+                        Address Is Required
+                    </span>
+                    
+            </div>
+           
+        </div>
+
+        <div class="form-group" [class.has-error]="pincode.invalid && pincode.touched" [class.has-success]="pincode.valid">
+            <label class="col-md-4 control-label" for="pincode">Pin Code </label>
+            <div class="col-md-4">
+            <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-map-pin" aria-hidden="true"></i>
+                            </div>
+                <input type="text" name="pincode" placeholder="Enter Pincode" class="form-control input-md" [(ngModel)]="model.pincode"
+                    #pincode="ngModel" required minlength="6"  maxlength="6" />
+            </div>
+                    <span class="help-block" *ngIf="pincode.errors?.required && pincode.touched">
+                        Pincode Is Required
+                    </span>
+                    <span class="help-block" *ngIf="pincode.errors?.minlength && pincode.touched">
+                        Pincode Must Be 6 Digit Long
+                    </span>
+                  
+            </div>
+            
+        </div>
+
+        <div class="form-group" [class.has-error]="emailAddress.invalid && emailAddress.touched" [class.has-success]="emailAddress.valid">
+            <label class="col-md-4 control-label" for="emailAddress">Email</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </div>
+                <input id="emailAddress" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="emailAddress" type="text"
+                    [(ngModel)]="model.emailAddress" placeholder="Enter Email Address" class="form-control input-md" #emailAddress="ngModel">
+                    </div>
+                    <span class="help-block" *ngIf="emailAddress.errors?.required && emailAddress.touched">
+                        Email Is Required
+                    </span>
+                    <span class="help-block" *ngIf="emailAddress.errors?.pattern && emailAddress.touched">
+                        Email Is Invalid
+                    </span>
+                    
+            </div>
+           
+        </div>
+
+        <div class="form-group" [class.has-error]="password.invalid && password.touched" [class.has-success]="password.valid">
+            <label class="col-md-4 control-label" for="password">Password</label>
+            <div class="col-md-4">
+                    <div class="input-group user">
+                            <div class="input-group-addon">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </div>
+                <input name="password" type="password" placeholder="Enter Password" class="form-control input-md" [(ngModel)]="model.password"
+                    #password="ngModel" minlength="4" maxlength="8" required />
+            </div>
+            <span class="help-block" *ngIf="password.errors?.required && password.touched">
+                Pasword Is Required
+            </span>
+            <span class="help-block" *ngIf="password.errors?.minlength && password.touched">
+                Minimum 4 Character Long
+            </span>
+            <span class="help-block" *ngIf="password.errors?.maxlength && password.touched">
+                Maximum 8 Character Long
+            </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+
+                <button type="submit" [disabled]="modelForm.invalid" class="btn btn-primary">Register</button>
+                &nbsp;&nbsp;
+                <button type="reset" class="btn btn-danger">Clear</button>
+            
+                <a [routerLink]="['/login']" class="btn btn-link">
+                    Login
+                </a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+    </div>
+    </div>
+</div>
+ 
+<div class="container">  
+        <div class="panel panel-default col-md-offset-2">
+          <div class="panel-body" style="background-color:#3c8dbc;margin-right:-15px;color: azure">Software Developed and Maintained by <span><a href="http://avics.co.in/" style="color:azure"> AVICS</a></span></div>
+        </div>
+</div>   

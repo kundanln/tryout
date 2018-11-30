@@ -1,0 +1,152 @@
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-12" >
+        <div class="box box-primary" >
+            <div class="box-header">
+                <i class="fa fa-edit"></i>
+
+                <h3 class="box-title">Payment</h3>
+            </div>
+            <div class="box-body pad table-responsive">
+                <!-- <p>Various types of buttons. Using the base class <code>.btn</code></p> -->
+
+                <div class="box-header with-border">
+                    <!-- <h3 class="box-title">
+                            {{ admissionModel.firstName+" "+admissionModel.lastName }}
+                            Installment Number : {{ installmentModel.installmentNum }}
+                        </h3>
+                        &nbsp;&nbsp;&nbsp;
+                        <p>Amount : {{ installmentModel.installmentAmount }} </p> -->
+                    <div class="box-tools pull-right">
+                        Date : {{ installmentModel.installmentDate | date }}
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-12  col-md-offset-0">
+                    <form novalidate #modelForm="ngForm" class="form-horizontal" (ngSubmit)="payment()">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Installment Number</label>
+                                <div class="col-md-4">
+                                    <p>{{ installmentModel.installmentNum }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Amount</label>
+                                <div class="col-md-4">
+                                    <p>{{ installmentModel.installmentAmount }}</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [class.has-error]="paymentmode.invalid && paymentmode.touched" [class.has-success]="paymentmode.valid">
+                                <label class="col-md-4 control-label" for="radio">Payment Mode</label>
+                                <div class="col-md-4">
+                                    <label class="radio-inline" for="radios-0">
+                                        <input type="radio" name="radio" id="radio-0" value="cash" name="paymentmode" [(ngModel)]="model.paymentmode" #paymentmode='ngModel'
+                                            required>Cash
+                                    </label>
+                                    <label class="radio-inline" for="radio-1">
+                                        <input type="radio" name="radio" id="radio-1" value="check" name="paymentmode" [(ngModel)]="model.paymentmode" #paymentmode='ngModel'
+                                            required>Check
+                                    </label>
+                                </div>
+                                <span class="help-block" *ngIf="paymentmode.errors?.required && paymentmode.touched">
+                                    Payment Mode Is Required
+                                </span>
+                            </div>
+
+                            <div *ngIf="model.paymentmode == 'check'">
+
+                                <div class="form-group" [class.has-error]="checkNumber.invalid && checkNumber.touched" [class.has-success]="checkNumber.valid">
+                                    <label class="col-md-4 control-label">Check Number :</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="checkNumber" [(ngModel)]="model.checkNumber" #checkNumber='ngModel' placeholder="Enter Check Number"
+                                            [required]="paymentmode.value == 'check'">
+                                    </div>
+                                    <span class="help-block" *ngIf="checkNumber.errors?.required && checkNumber.touched">
+                                        Check Number Is Required
+                                    </span>
+                                </div>
+                                <div class="form-group" [class.has-error]="checkDate.invalid && checkDate.touched" [class.has-success]="checkDate.valid">
+                                    <label class="col-md-4 control-label">Check Date :</label>
+                                    <div class="col-md-4">
+                                        <input type="text" name="checkDate" bsDatepicker [bsConfig]="datePickerConfig" placement="right" [(ngModel)]="model.checkDate"
+                                            placeholder="Enter Check Date" class="form-control input-md" #checkDate='ngModel'
+                                            [required]="paymentmode.value == 'check'">
+                                    </div>
+                                    <span class="help-block" *ngIf="checkDate.errors?.required && checkDate.touched">
+                                        Check Date Is Required
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for=""></label>
+                                <div class="col-md-4">
+                                    <button title="Submit" type="submit" [disabled]="modelForm.invalid" class="btn btn-primary">Submit</button>&nbsp;
+                                    <!-- <a title="Cancel"  routerLink="/home" class="btn btn-danger">Cancel</a> -->
+                                    <a title="Cancel" (click)="onCancel()" class="btn btn-danger">Cancel</a><br><br>
+                                    <!-- <button  type= "button"  class="btn btn-danger">Cancel</button> -->
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="form-group" [class.has-error]="CourseName.invalid && CourseName.touched" [class.has-success]="CourseName.valid">
+                                <label class="col-md-4 control-label" for="CourseName">Course Name</label>
+                                <div class="col-md-4">
+                                    <input id="CourseName" name="CourseName" type="text" [(ngModel)]="model.courseName" placeholder="Enter Course Name" class="form-control input-md"
+                                        required #CourseName="ngModel">
+                                </div>
+                                <span class="help-block" *ngIf="CourseName.invalid && CourseName.touched">
+                                    Course Name Is Required
+                                </span>
+                            </div>
+
+                            <div class="form-group" [class.has-error]="courseDiscription.invalid && courseDiscription.touched" [class.has-success]="courseDiscription.valid">
+                                <label class="col-md-4 control-label" for="courseDiscription">Description</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control" id="courseDiscription" name="courseDiscription" [(ngModel)]="model.courseDiscription" placeholder="About Course"
+                                        #courseDiscription="ngModel" required></textarea>
+                                    <span class="help-block" *ngIf="courseDiscription.invalid && courseDiscription.touched">
+                                        Course Discription Is Required
+                                    </span>
+                                </div>
+                            </div> 
+                        
+                        
+                    <div class="form-group" [class.has-error]="followUpDate.invalid && followUpDate.touched" [class.has-success]="followUpDate.valid">
+                        <label class="col-md-4 control-label" for="followUpDate">Follow Up Date</label>
+                        <div class="col-md-4">
+                            <input id="followUpDate" name="followUpDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right" [(ngModel)]="model.followUpDate"
+                                placeholder="Enter FollowUp Date" class="form-control input-md" required #followUpDate="ngModel">
+                        </div>
+                        <span class="help-block" *ngIf="followUpDate.invalid && followUpDate.touched">
+                            Date Is Required
+                        </span>
+                    </div> 
+                -->
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="backdrop" [ngStyle]="{'display':display}"></div>
+                <div class="lds-ellipsis" *ngIf="showLoadingIndicator" [ngStyle]="{'display':display}">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <!-- <pre> Form Model : {{ model | json }} </pre> -->
+
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <!-- /.col -->
+
+    
+</div>

@@ -1,0 +1,87 @@
+<!-- <div class="panel panel-default">
+    <div class="panel-body"> -->
+        <div class="form-group">
+
+
+            <label class="col-md-2" for="radios">Search Enquiry By:</label>
+            <div class="col-md-4">
+
+                <label class="radio-inline" for="radios-0">
+                    <input type="radio" name="radios" id="radios-0" [(ngModel)]="selectedRadioButtonvalue" value="Name"
+                        (change)="onRadionButtonselectionChanged()"> Name
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input type="radio" name="radios" id="radios-1" [(ngModel)]="selectedRadioButtonvalue" value="Email"
+                        (change)="onRadionButtonselectionChanged()"> Email
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input type="radio" name="radios" id="radios-2" [(ngModel)]="selectedRadioButtonvalue" value="MobileNumber"
+                        (change)="onRadionButtonselectionChanged()"> Mobile Number
+                </label>
+
+            </div>
+
+             <div class="input-group"> 
+                                       
+                    <input type="text" class="form-control" placeholder="Enter {{ placeHolder }} Here" style="width:300px"
+                            [(ngModel)]="searchTerm" id="myInput" />
+                    <div class="panel panel-default" style="position:absolute; top:10px;">
+                                <!-- style="position: absolute;top:10px;width: 300px;height: 50px;" -->
+                            <div *ngFor="let enquiry of filterEnquires ">
+                              
+                                     <a (click)="setDetails(enquiry)" *ngIf="placeHolder=='Name'" style="padding: 128px;height:10px;"> 
+                                       {{ enquiry.firstName}}
+                                     </a> 
+                                      <a (click)="setDetails(enquiry)" *ngIf="placeHolder=='Email'" style="padding: 63px;height:10px;"> 
+                                        {{ enquiry.emailAddress}}
+                                      </a>
+                                       <a (click)="setDetails(enquiry)" *ngIf="placeHolder=='MobileNumber'" style="padding: 110px;height:10px;"> 
+                                        {{ enquiry.mobileNumber}}
+                                      </a>
+                 
+                             </div>
+                                                  
+                        
+                     </div> 
+                 </div> 
+
+              <!-- <div class="dropdown">
+                
+                  <div id="myDropdown" class="dropdown-content">
+                   <input type="text"  class="form-control" id="myInput" placeholder="Enter {{ placeHolder }} Here" style="width:300px"
+                            [(ngModel)]="searchTerm" />
+                            <div *ngFor="let enquiry of filterEnquires ">
+                                 <span>{{ enquiry.firstName}}</span>
+                                 <span>{{ enquiry.mobileNumber}}</span>
+                                 <span>{{ enquiry.emailAddress}}</span>
+
+                           </div>
+                   
+                  </div>
+            </div>  -->
+
+            
+
+
+
+       
+        
+            
+       
+
+        <!-- <div class="panel panel-default">
+            <div class="panel-body">
+                <ng-container *ngFor="let enquiry of filterEnquires ">
+                    <ul>
+                        <a (click)="setDetails(enquiry)">
+                             <li style="list-style-type: none">{{ enquiry.firstName +" "+enquiry.mobileNumber+"
+                                "+enquiry.emailAddress }}</li>
+                                <li style="list-style-type: none">{{ enquiry.firstName}}</li>
+                        </a>
+                    </ul>
+                </ng-container>
+            </div>
+        </div> -->
+
+    <!-- </div>
+</div> -->

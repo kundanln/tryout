@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info" style="height:50%;">
+      <div class="box-header with-border" style="margin-top: 10px;">
+          <i class="fa fa-gg"></i> 
+        <h3 class="box-title">Installment Details</h3>
+
+        <div class="box-tools pull-right">
+          <span>
+            <a (click)="addNewInstallment()">
+              <i class="fa fa-fw fa-plus"></i>Add New Installment
+            </a>
+          </span>
+        </div>
+   </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+       
+        <div class="row">
+          <div class="col-md-12">
+
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="callout callout-info" >
+                      <span>
+                        <p><strong>{{ name }}</strong>
+                        <strong style="margin-left: 30px;"> Course : {{ course }} </strong><span style="float:right;"><strong>  Total Amount : {{ total }}</strong></span></p>
+                    </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="callout callout-warning">
+                      <span>
+                          <p> <i class="fa fa-bullhorn"></i> If Installment Are Edit Or  Adjust 
+                          Click Save Button <span style="float: right;margin-top: -6px;">
+                                <button  [disabled]="saveAfterEditButtonStatus" [class.setColor]="!saveAfterEditButtonStatus" title="Save" class="btn btn-social-icon btn-dropbox" (click)="saveFullRowData()">
+                                  <i class="fa fa-save"></i>
+                                </button>
+                         </span>
+                        </p>
+                        
+                          
+                      </span>
+                      
+                     
+                    </div>
+                </div>
+                </div>
+                <br>
+
+            <div style="height: 100%; box-sizing: border-box;">
+              <ag-grid-angular 
+                #agGrid style="width: 100%; height: 120%;" 
+                id="myGrid" 
+                [rowData]="rowData" 
+                class="ag-theme-balham" 
+                [columnDefs]="columnDefs"
+                [rowData]="rowData" 
+                [context]="context" 
+                [frameworkComponents]="frameworkComponents" 
+                [rowSelection]="rowSelection"
+                (gridReady)="onGridReady($event)" 
+                enableColResize 
+                rowHeight="40 " 
+                [suppressClickEdit]="true" 
+                [pagination]="true"
+                [paginationPageSize]="5"
+                [animateRows]="true"
+                [enableSorting]="true"
+                [enableFilter]="false"
+                [floatingFilter]="true" 
+                [getRowNodeId]="getRowNodeId" 
+                [enableCellChangeFlash]="true"
+                [defaultColDef]="defaultColDef" 
+                >
+              </ag-grid-angular>
+            </div>
+
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- ./box-body -->
+
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- <h4 class="modal-title">{{ fullName }}</h4> -->
+      </div>
+     
+      <div class="modal-body">
+          <div class="col-md-12  col-md-offset-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let model of installmentDetailsData">
+                    <tr >
+                      <td> {{ model.installmentNum}} </td>
+                      <td> {{ model.installmentDate }} </td>
+                      <td> {{ model.installmentAmount }} </td>
+                      <td><button [disabled]="model.flag" id="button1id" name="button1id" (click)="getRecordByID(course.cid)" class="btn btn-success">Edit</button></td>
+                    </tr>
+                  </ng-container>
+                  <tr *ngIf="!installmentDetailsData">
+                    <td colspan="5">
+                      Loading data please Wait...
+                    </td>
+                  </tr>
+                  <tr *ngIf="installmentDetailsData && installmentDetailsData.length==0">
+                    <td colspan="5">No Installment to display </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+
+
+      <!-- <adjust-installment [installmentList]="rowData"></adjust-installment> -->
+      <form #modelForm="ngForm" class="form-horizontal" (ngSubmit)="onAddUpdateRow()">
+ 
+
+          <div class="col-md-12  col-md-offset-0">
+
+            <div class="form-group" [class.has-error]="installmentNum.invalid && installmentNum.touched" [class.has-success]="installmentNum.valid">
+              <label class="col-md-4 control-label" for="installmentNum">Number</label>
+              <div class="col-md-4">
+                <input id="installmentNum" name="installmentNum" type="text" [(ngModel)]="model.installmentNum" placeholder="Enter  Number"
+                  class="form-control input-md"  #installmentNum="ngModel" required [readonly]="buttonStatus">
+              </div>
+              <span class="help-block" *ngIf="installmentNum.invalid && installmentNum.touched">
+                  Installment Number Is Required
+              </span>
+            </div>
+
+            <div class="form-group"  [class.has-error]="installmentDate.invalid && installmentDate.touched" [class.has-success]="installmentDate.valid">
+              <label class="col-md-4 control-label" for="installmentDate">Date</label>
+              <div class="col-md-4">
+                <input [disabled]="buttonStatus" id="installmentDate" name="installmentDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" placement="right"
+                  [(ngModel)]="model.installmentDate" placeholder="Select Date" class="form-control input-md" #installmentDate="ngModel" required >
+              </div>
+              <span class="help-block" *ngIf="installmentDate.invalid && installmentDate.touched">
+                  Installment Date Is Required
+              </span>
+            </div>
+
+            <div class="form-group" [class.has-error]="installmentAmount.invalid && installmentAmount.touched" [class.has-success]="installmentAmount.valid">
+              <label class="col-md-4 control-label" for="installmentAmount">Amount</label>
+              <div class="col-md-4">
+                <input id="installmentAmount" name="installmentAmount" type="number" [(ngModel)]="model.installmentAmount" placeholder="Enter Amount"
+                  class="form-control input-md" #installmentAmount="ngModel" required >
+              </div>
+              <span class="help-block" *ngIf="installmentAmount.invalid && installmentAmount.touched">
+                  Installment Amount Is Required
+              </span>
+            </div>
+          </div>
+        
+        <div class="modal-footer">
+          <button [disabled]="modelForm.invalid" type="submit" class="btn btn-primary">{{ buttonAddUpdate }}</button>
+        </div>
+      </form>
+    </div>
+      <!-- <pre>{{modelForm.value | json}}</pre>  -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal !-->

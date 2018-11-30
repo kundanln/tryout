@@ -1,0 +1,15 @@
+#myGrid
+{
+    flex-grow: 1;
+    height: 500px !important;
+    min-height: 500px !important;
+    
+}
+.backdrop{ 
+    background-color:rgba(0,0,0,0.6);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+}

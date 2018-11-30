@@ -1,0 +1,32 @@
+
+<div style="height: 100%; box-sizing: border-box;">
+  <ag-grid-angular
+    #agGrid
+    style="width: 100%; height: 100%;"
+    id="myGrid"
+    [rowData]="rowData"
+    class="ag-theme-balham"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [context]="context"
+    [frameworkComponents]="frameworkComponents"
+    [rowSelection]="rowSelection"
+    (gridReady)="onGridReady($event)"
+    enableColResize
+    rowHeight="35"
+    [pagination]="true"
+    [paginationPageSize]="5"
+    [animateRows]="true"
+    [enableSorting]="true"
+    [enableFilter]="false"
+    [floatingFilter]="true">
+  </ag-grid-angular>
+  
+</div>
+
+<!-- <div class="row" style="background-color: black; line-height: 1.9">
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="background-color:black;">
+          <div style="color:white;text-align: center;"> Copyright � 2018 Let's Speak. All Rights Reserved. Designed & Developed by AVICS</div>
+ </div>
+ 
+</div> -->

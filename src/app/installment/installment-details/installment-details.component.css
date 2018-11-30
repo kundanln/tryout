@@ -1,0 +1,32 @@
+#myGrid
+{
+    flex-grow: 1;
+    height: 250px !important;
+    min-height: 400px !important;
+}
+#myGrid1{
+    flex-grow: 1;
+    height: 250px !important;
+    min-height: 250px !important;
+    width: 100%; 
+    /*height: 100%; */
+}
+
+.backdrop{ 
+    background-color:rgba(0,0,0,0.6);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+}
+a.disabled {
+    pointer-events: none;
+    cursor:default;
+}
+
+.setColor{
+
+    background-color: red;
+
+}  

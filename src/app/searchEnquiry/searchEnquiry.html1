@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+
+
+            <label class="col-md-2" for="radios">Search Enquiry By:</label>
+            <div class="col-md-4">
+
+                <label class="radio-inline" for="radios-0">
+                    <input type="radio" name="radios" id="radios-0" [(ngModel)]="selectedRadioButtonvalue" value="Name"
+                        (change)="onRadionButtonselectionChanged()"> Name
+                </label>
+                <label class="radio-inline" for="radios-1">
+                    <input type="radio" name="radios" id="radios-1" [(ngModel)]="selectedRadioButtonvalue" value="Email"
+                        (change)="onRadionButtonselectionChanged()"> Email
+                </label>
+                <label class="radio-inline" for="radios-2">
+                    <input type="radio" name="radios" id="radios-2" [(ngModel)]="selectedRadioButtonvalue" value="MobileNumber"
+                        (change)="onRadionButtonselectionChanged()"> Mobile Number
+                </label>
+
+            </div>
+            <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                        <input type="text" class="form-control" placeholder="Enter {{ placeHolder }} Here" style="width:300px"
+                            [(ngModel)]="searchTerm" />
+                    
+                </div>
+        </div>
+        
+            
+       
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ng-container *ngFor="let enquiry of filterEnquires ">
+                    <ul>
+                        <a (click)="setDetails(enquiry)">
+                            <li style="list-style-type: none">{{ enquiry.firstName +" "+enquiry.mobileNumber+"
+                                "+enquiry.emailAddress }}</li>
+                        </a>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+</div>

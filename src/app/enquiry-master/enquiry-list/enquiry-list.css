@@ -1,0 +1,19 @@
+/* .success{
+
+    color: rgb(16, 179, 16);
+}
+
+table tr:hover {
+    background-color: rgb(202, 202, 202);
+}
+.curser
+{
+    cursor: pointer;
+} */
+
+#myGrid
+{
+    flex-grow: 1;
+    height: 500px !important;
+    min-height: 500px !important;
+}

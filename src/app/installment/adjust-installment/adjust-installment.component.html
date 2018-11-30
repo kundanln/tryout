@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+  
+      <div class="col-md-12  col-md-offset-0">
+  
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Course Name</th>
+              <th>courseDiscription</th>
+              <th>duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let model of dataList">
+              <tr>
+                <td> {{ model.installmentNum}} </td>
+                <td> {{ model.installmentDate }} </td>
+                <td> {{ model.installmentAmount }} </td>
+                <td><button id="button1id" name="button1id" (click)="getRecordByID(course.cid)" class="btn btn-success">Edit</button></td>
+                <td><button id="button2id" name="button2id" (click)="deleteCourse(course.cid)" class="btn btn-danger">Delete</button></td>
+              </tr>
+            </ng-container>
+            <tr *ngIf="!dataList">
+              <td colspan="5">
+                Loading data please Wait...
+              </td>
+            </tr>
+            <tr *ngIf="dataList && dataList.length==0">
+              <td colspan="5">No Courses to display </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> 
+
+

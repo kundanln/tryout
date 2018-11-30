@@ -1,0 +1,366 @@
+
+<div class="row" style="margin-top: 14px;">
+        <div class="col-md-12">
+            <div class="box" >
+                <div class="box-header with-border">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <h3 class="box-title">Add Enquiry</h3>
+                    <div class="box-tools pull-right">
+                        <span>
+                            <a [routerLink]="['/enquiry/enq-list']">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form novalidate #modelForm="ngForm" (ngSubmit)="addUpdateEnquiry()">
+    
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched" [class.has-success]="firstName.valid">
+                                    <label>First Name</label>
+                                    <div class="input-group user">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                      <input id="firstName" name="firstName" type="text" [(ngModel)]="model.firstName" placeholder="Enter First Name" class="form-control input-md"
+                                        #firstName="ngModel" required>
+                                        
+                                        
+                                    </div>
+                                     <span class="help-block" *ngIf="firstName.invalid && firstName.touched">
+                                            First Name Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" class="form-group" [class.has-error]="middleName.invalid && middleName.touched" [class.has-success]="middleName.valid">
+                                    <label>Middle Name</label>
+                                    <div class="input-group user">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="middleName" type="text" [(ngModel)]="model.middleName" placeholder="Enter Middle Name" class="form-control input-md"
+                                        #middleName="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="middleName.invalid && middleName.touched" style="font-size: 10px;">
+                                        Middle Name Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="form-group" class="form-group" [class.has-error]="lastName.invalid && lastName.touched" [class.has-success]="lastName.valid">
+                                    <label>Last Name</label>
+                                    <div class="input-group user">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="lastName" type="text" [(ngModel)]="model.lastName" placeholder="Enter Last Name" class="form-control input-md"
+                                        #lastName="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="lastName.invalid && lastName.touched">
+                                        Last Name Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group" class="form-group" [class.has-error]="enquiryDate.invalid && enquiryDate.touched" [class.has-success]="enquiryDate.valid">
+                                    <label>Date Of Enquiry</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input [disabled]="true" name="enquiryDate" type="text" bsDatepicker [bsConfig]="datePickerConfigWithMin" placement="right"
+                                            [(ngModel)]="model.enquiryDate" placeholder="Enter Date Of Enquiry" class="form-control input-md"
+                                            required #enquiryDate="ngModel">
+                                        </div>
+                                        <span class="help-block" *ngIf="enquiryDate.invalid && enquiryDate.touched">
+                                            Date Is Required
+                                        </span>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="mobileNumber.invalid && mobileNumber.touched" [class.has-success]="mobileNumber.valid">
+                                    <label>Mobile Number</label>
+                                    <div class="input-group mobile">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-mobile" style="font-size: large;" ></i>
+                                        </div>
+                                    <input name="mobileNumber" type="text" [(ngModel)]="model.mobileNumber" placeholder="Enter Mobile Number" class="form-control input-md"
+                                        pattern="^((\\+91-?)|0)?[0-9]{10}$" maxlength="10" minlength="10" required #mobileNumber="ngModel">
+                                    </div>
+                                    <span class="help-block" *ngIf="mobileNumber.errors && mobileNumber.touched">
+                                        <span class="help-block" *ngIf="mobileNumber.errors?.required">
+                                            Mobile Number Is Required
+                                        </span>
+                                        <span class="help-block" *ngIf="mobileNumber.errors?.minlength">
+                                            Not Less Than 10 Digit
+                                        </span>
+                                        <span class="help-block" *ngIf="mobileNumber.errors?.pattern">
+                                            Only Number Is Required
+                                        </span>
+    
+                                    </span>
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="form-group" class="form-group" [class.has-error]="emailAddress.invalid && emailAddress.touched" [class.has-success]="emailAddress.valid">
+                                    <label>Email</label>
+                                    <div class="input-group email">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        </div>
+                                    <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="emailAddress" type="text" [(ngModel)]="model.emailAddress"
+                                        placeholder="Enter Email Address" class="form-control input-md" #emailAddress="ngModel">
+                                    </div>
+                                    <span class="help-block" *ngIf="emailAddress.errors?.required && emailAddress.touched">
+                                        Email Is Required
+                                    </span>
+                                    <span class="help-block" *ngIf="emailAddress.errors?.pattern && emailAddress.touched">
+                                        Email Is Invalid
+                                    </span>
+                                   
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <div class="col-md-12">
+    
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="highestQual.invalid && highestQual.touched" [class.has-success]="highestQual.valid">
+                                    <label>Highest Qualification</label>
+                                    <div class="input-group email">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                         </div>
+                                    <input name="highestQual" type="text" [(ngModel)]="model.highestQual" placeholder="Enter Qualification" class="form-control input-md"
+                                        #highestQual="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="highestQual.invalid && highestQual.touched">
+                                        Qualification Is Required
+                                    </span>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="collegeName.invalid && collegeName.touched" [class.has-success]="collegeName.valid">
+                                    <label>College Name</label>
+                                    <div class="input-group college">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="collegeName" type="text" [(ngModel)]="model.collegeName" placeholder="Enter College Name" class="form-control input-md"
+                                        #collegeName="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="collegeName.invalid && collegeName.touched">
+                                        College Name Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="studentProfession.invalid && studentProfession.touched" [class.has-success]="studentProfession.valid">
+                                    <label>Student Profession</label>
+                                    <div class="input-group email">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                         </div>
+                                    <input name="studentProfession" type="text" [(ngModel)]="model.studentProfession" placeholder="Enter Profession Name" class="form-control input-md"
+                                        #studentProfession="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="studentProfession.invalid && studentProfession.touched">
+                                        Student Profession Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="birthDate.invalid && birthDate.touched" [class.has-success]="birthDate.valid">
+                                    <label>Date of Birth</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                                        </div>
+                                        <input name="birthDate" type="text" bsDatepicker [bsConfig]="datePickerConfigWithoutMin" placement="right" [(ngModel)]="model.birthDate"
+                                            placeholder="Enter Date  YYYY/MM/DD" class="form-control input-md" required #birthDate="ngModel">
+                                    </div>
+                                    <span class="help-block" *ngIf="birthDate.invalid && birthDate.touched">
+                                        Date Is Required
+                                    </span>
+    
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referred By</label>
+                                    <select class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="organizationName.invalid && organizationName.touched" [class.has-success]="organizationName.valid">
+                                    <label>Organization Name</label>
+                                    <div class="input-group building">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-building" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="organizationName" type="text" [(ngModel)]="model.organizationName" placeholder="Enter Oraganisation Name" class="form-control input-md"
+                                        #organizationName="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="organizationName.invalid && organizationName.touched">
+                                        Organization Name Is Required
+                                    </span>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="refferedBy.invalid && refferedBy.touched" [class.has-success]="refferedBy.valid">
+                                    <label>Referred By</label>
+                                    <div class="input-group user">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="refferedBy" type="text" [(ngModel)]="model.refferedBy" placeholder="Enter Referal Name" class="form-control input-md"
+                                        #refferedBy="ngModel" required>
+                                    </div>
+                                    <span class="help-block" *ngIf="refferedBy.invalid && refferedBy.touched">
+                                        Referred By Field Is Required
+                                    </span>
+                                   
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-md-12">
+    
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="followUpDate.invalid && followUpDate.touched" [class.has-success]="followUpDate.valid">
+                                    <label>Follow Up Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input name="followUpDate" type="text" bsDatepicker [bsConfig]="datePickerConfigWithMin" placement="right" [(ngModel)]="model.followUpDate"
+                                            placeholder="Enter Date YYYY/MM/DD" class="form-control input-md" required #followUpDate="ngModel">
+                                    </div>
+                                    <span class="help-block" *ngIf="followUpDate.invalid && followUpDate.touched">
+                                        Date Is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="comment.invalid && comment.touched" [class.has-success]="comment.valid">
+                                    <label>Comment</label>
+                                    <div class="input-group comment">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        </div>
+                                    <input name="comment" type="text" [(ngModel)]="model.comment" placeholder="Enter Comment" class="form-control input-md" #comment="ngModel"
+                                        required>
+                                    </div>
+                                    <span class="help-block" *ngIf="comment.invalid && comment.touched">
+                                        Comment Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="courses.invalid && courses.touched" [class.has-success]="courses.valid">
+                                    <label>Courses</label>
+                                    <div class="input-group course">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-book" aria-hidden="true"></i>
+                                        </div>
+                                    <angular2-multiselect required #courses="ngModel" [data]="dropdownList" [settings]="dropdownSettings" [(ngModel)]="model.courses"
+                                        [ngModelOptions]="{standalone: true}">
+                                    </angular2-multiselect>
+                                </div>
+                                    <span class="help-block" *ngIf="courses.errors?.required && courses.touched">
+                                        Course Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-md-12">
+    
+                            <div class="col-md-4">
+                                <div class="form-group" [class.has-error]="address.invalid && address.touched" [class.has-success]="address.valid">
+                                    <label>Address</label>
+                                    <div class="input-group home">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-home" aria-hidden="true" style="font-size: large;"></i>
+                                        </div>
+                                    <textarea name="address" type="text" [(ngModel)]="model.address" placeholder="Enter Address" class="form-control input-md"
+                                        #address="ngModel" required></textarea>
+                                    </div>
+                                    <span class="help-block" *ngIf="address.invalid && address.touched">
+                                        Address Is Required
+                                    </span>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label></label>
+                                    <div>
+                                        <label>Freeze Enquiry :</label>
+                                        <input style="margin-left: 16px" type="checkbox" name="freezEnquery" id="freezEnquery" value="true" [(ngModel)]="model.freezEnquery"> Yes
+                                        <br>
+                                        <button title="{{ button == 'Update' ? 'Update' : 'Add' }}" type="submit" [disabled]="modelForm.invalid" class="btn btn-primary">{{button}}</button>
+                                &nbsp;&nbsp;
+                                <button title="{{ button == 'Update' ? 'Cancel' : 'Clear' }}" type="{{ button == 'Update' ? 'button' : 'reset' }}" (click)="Cancel()"
+                                    class="btn btn-danger">{{ button == 'Update' ? 'Cancel' : 'Clear' }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+    
+                        </div>
+    
+                        <!--<div class="form-group">
+                                <label class="col-md-4 control-label" for=""></label>
+                                <div class="col-md-4">
+                                <button title="{{ button == 'Update' ? 'Update' : 'Add' }}" type="submit" [disabled]="modelForm.invalid" class="btn btn-primary">{{button}}</button>
+                                &nbsp;&nbsp;
+                                <button title="{{ button == 'Update' ? 'Cancel' : 'Clear' }}" type="{{ button == 'Update' ? 'button' : 'reset' }}" (click)="Cancel()"
+                                    class="btn btn-danger">{{ button == 'Update' ? 'Cancel' : 'Clear' }}</button>
+                            </div>
+                        </div>-->
+                    </form>
+    
+                </div>
+                <!-- ./box-body -->
+    
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>

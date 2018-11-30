@@ -1,0 +1,189 @@
+<form #invoiceForm="ngForm" (ngSubmit)="submitAndPrint()">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div id="printSectionId">
+                <div class="invoice-box">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr class="top">
+                            <td colspan="3">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="assets/images/institute-logo.jpg" class="logo">
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <h4 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Sri Sri Academy And Lets Speak English Academy </h4>
+                                                <p>Amit Plaza,Thermax Chowk,Chinchwad,Pune -19,Contact No : 8177868570</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div>
+                                                    <label>Invoice No:</label>
+                                                    <input type="text" class="form-control" name="invoiceNo" [(ngModel)]="model.invoiceNo">
+                                                </div>
+                                                <div>
+                                                    <label>Date:</label>
+                                                    <input type="text" class="form-control" name="receiptDate" [(ngModel)]="model.receiptDate">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label>Registration No :</label>
+                                                            <input type="text" class="form-control" name="regNo" [(ngModel)]="model.regNo">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Student Name :</label>
+                                                            <input type="text" class="form-control" name="fullName" [(ngModel)]="model.fullName">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label>Course Name :</label>
+                                                            <input type="text" class="form-control" name="courseName" [(ngModel)]="model.courseName">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Payable Fee :</label>
+                                                            <input type="text" class="form-control" name="fee" [(ngModel)]="model.fee">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label class="headings" for="radio">Payment Mode</label>
+                                                            <div>
+                                                                <label class="radio-inline" for="radios-0">
+                                                                    <input type="radio" name="radio" id="radio-0" value="cash" name="paymentmode" [(ngModel)]="model.paymentmode">Cash
+                                                                </label>
+                                                                <label class="radio-inline" for="radio-1">
+                                                                    <input type="radio" name="radio" id="radio-1" value="check" name="paymentmode" [(ngModel)]="model.paymentmode">Check
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div id="checkId" *ngIf="model.paymentmode == 'check'">
+
+                                                            <div>
+                                                                <div>
+                                                                    <label>Check Number :</label>
+                                                                    <input type="text" class="form-control" name="checkNumber" [(ngModel)]="model.checkNumber" checked="checked">
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div>
+                                                                    <label>Check Date :</label>
+                                                                    <input type="text" class="form-control" name="checkDate" [(ngModel)]="model.checkDate">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label class="headings" for="radios">Payment Type</label>
+                                                            <div>
+                                                                <label class="radio-inline" for="radios-0">
+                                                                    <input type="radio" id="radio-0" value="installment" name="paymentType" [(ngModel)]="model.paymentType" checked="checked">Installments
+                                                                </label>
+                                                                <label class="radio-inline" for="radios-1">
+                                                                    <input type="radio" id="radio-1" value="full_payment" name="paymentType" [(ngModel)]="model.paymentType">Full Payments
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="3">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label>Paid Amount :</label>
+                                                            <input type="text" class="form-control" name="installmentAmount" [(ngModel)]="model.installmentAmount">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Remaining Amount :</label>
+                                                            <input type="text" class="form-control" name="remainingAmount" [(ngModel)]="model.remainingAmount">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Next Fallow up Date :</label>
+
+                                                            <input id="nextInstallmentDate" name="nextInstallmentDate" type="text" bsDatepicker [(ngModel)]="model.nextInstallmentDate"
+                                                                class="form-control input-md" required="">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="information">
+                                        <td colspan="2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <label>Comment :</label>
+                                                            <input type="text" class="form-control" name="comment" [(ngModel)]="model.comment">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- <div class="panel-footer"  >
+            <button type="button" class="btn btn-default">Close</button>
+            <button type="submit" class="btn btn-primary pull-right">Print</button>
+        </div> -->
+    </div>
+</form>

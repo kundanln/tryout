@@ -1,0 +1,98 @@
+<div class="panel panel-primary">
+    <br>
+    <div class="panel-body">
+        <div class="invoice-box" id="printSectionId">
+            <div class="row margin">
+                <div class="input-field col s4">
+                    <img src="assets/images/institute-logo.jpg" class="logo">
+                </div>
+                <div class="input-field col s8">
+                    <div class="heAddmain">
+                        <h3 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;margin-left: -176px;">Sri Sri Academy And Lets Speak English Academy</h3>
+                        <p class="HeadAddr">Amit Plaza,Thermax Chowk,Chinchwad,Pune -19,
+                            <br>
+                            <span style="margin-left:60px;">Contact No : 9403722331</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row margin">
+
+                <div class="input-field col s12">
+                    <p>
+                        <label class="invoice1">Invoice No: </label> {{dataForInvoice.invoiceNo }}
+                        <br>
+                        <label class="reg">Reg No: </label> {{ dataForInvoice.regNo }}
+                        <label class="date">Date: </label> {{ dataForInvoice.receiptDate }}
+                    </p>
+
+                    <!-- <label style="margin-left:160px;">Date:</label>{{ dataForInvoice.invoiceNo }}</p> -->
+
+                </div>
+            </div>
+            <h4 class="headings">Receipt</h4>
+            <div class="container">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <span>
+                            <strong>Student Name :</strong>
+                            <span>{{ dataForInvoice.fullName }}</span>
+                            <span class="course">
+                                <strong>Course Name :</strong> {{ dataForInvoice.courseName }}</span>
+                        </span>
+                        <br>
+                        <br>
+                        <span>
+                            <strong>Payable Fee :</strong>
+                            <span> {{ dataForInvoice.fee }}</span>
+                            <span class="pmode">
+                                <strong>Payment Mode :</strong> {{ dataForInvoice.paymentmode }}</span>
+                        </span>
+                        <br>
+                        <br>
+                        <span>
+                            <strong>Payment Type :</strong>
+                            <span>{{ dataForInvoice.paymentType }}</span>
+                            <span class="pamt">
+                                <strong>Paid Amount :</strong> {{ dataForInvoice.installmentAmount }}</span>
+                            <span class="ramt">
+                                <strong>Remaining Amount :</strong> {{ dataForInvoice.remainingAmount }}</span>
+                        </span>
+                        <br>
+                        <br>
+                        <br>
+                        <span>
+                            <span class="signatory">Authorised Signatory</span>
+                            <br>
+                            <span>Thank you for your generosity.We appreciate your support..!!</span>
+                        </span>
+                        <!-- <span> <strong>Payable Fee </strong> 2700 <strong>Payment Mode </strong>Cash</span>             </br></br>
+							 <span> <strong>Payable Type </strong> installment <strong>Paid Amount </strong>700 <strong>Reamaing Amount </strong>700</span>-->
+                        <!-- <span><strong>Student Name</strong><p>Kundan Narkhede</p></span>	-->
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Invoice-box-->
+
+        <div class="panel-footer" id="condition_dependancy" style="margin-top: 5px;">
+            <div class="box-tools pull-left">
+                <span>
+                    <a title="Close" (click)="navigateMe()" >
+                        <i class="fa fa-times"></i>
+                    </a>
+                </span>
+            </div>
+            <div class="box-tools pull-right">
+               
+                <span>
+                    <a title="Print" (click)=submitAndPrint()>
+                        <i class="fa fa-print"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

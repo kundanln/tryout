@@ -1,0 +1,431 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+            <b>Class</b>
+        </span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+            <b>Class</b>Management</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="assets/images/user.jpg" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{ currentUser.firstName+" "+currentUser.lastName }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="assets/images/user.jpg" class="img-circle" alt="User Image">
+
+                            <p>
+                                {{currentUser.firstName+" "+currentUser.lastName }}
+                                <small>Member since {{ memeber }}</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <!-- <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Sales</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </div>
+                        </li> -->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a data-toggle="modal" data-target="#profileModel" class="btn btn-default btn-flat">Profile</a>
+                                <!-- <a routerLink="/profile" class="btn btn-default btn-flat">Profile</a> -->
+                            </div>
+                            <div class="pull-right">
+                                <a (click)="signOut()" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>       
+        </div>
+
+    </nav>
+</header>
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <!-- <div class="user-panel">
+            <div class="pull-left image">
+                <img src="assets/CSS/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>{{ currentUser.firstName+" "+currentUser.lastName  }}</p>
+                <a href="#">
+                    <i class="fa fa-circle text-success"></i> Online
+                </a>
+            </div>
+        </div> -->
+        <!-- search form -->
+        <!-- <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form> -->
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+           
+                <li class="active treeview menu-open">
+                        <a routerLink="/home">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">  
+                        
+
+          <!--  Menu 1
+               <li class="active treeview menu-open">
+                <a routerLink="/home">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+    
+                    <li routerLinkActive="active">
+                        <a routerLink="/home">
+                            <i class="fa fa-home" style="font-size: larger;"></i> Home</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a [routerLink]="['/cs/cs-list']">
+                            <i class="fa fa-book" ></i>Course Master</a>
+                    </li>
+
+                    <li routerLinkActive="active">
+                        <a [routerLink]="['/enquiry/enq-list']">
+                            <i class="fa fa-hand-o-up" ></i>Enquiry Master</a>
+                        
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/admission">
+                            <i class="fa fa-id-card-o" style="font-size: small;"></i> Admission</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/admissionList">
+                            <i class="fa fa-users"></i>All Admission</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/dueList">
+                            <i class="fa fa-gg"></i> Pay Installments</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-file-pdf-o"></i> Reports
+                            <span class="caret"></span>
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a data-toggle="modal" data-target="#myModal">Admission</a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a data-toggle="modal" data-target="#myModal1">Total Collection</a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a data-toggle="modal" data-target="#expectedIncomeModal">Expected Collection</a>
+                            </li>
+                        </ul>
+                        
+                   </li>
+
+                </ul>
+           </li> -->
+
+            <!--Menu 2-->
+            <li class="active treeview menu-open">
+                <a routerLink="/home">
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
+                    <span class="pull-right-container">
+                       
+                    </span>
+                </a>
+            </li>
+            <li class="active treeview menu-open">
+                <a routerLink="/cs/cs-list">
+                    <i class="fa fa-book"></i>
+                    <span>Course Master</span>
+                    <span class="pull-right-container">
+                       
+                    </span>
+                </a>
+            </li>
+            <li class="active treeview menu-open">
+                    <a routerLink="/enquiry/enq-list">
+                        <i class="fa fa-hand-o-up"></i>
+                        <span>Enquiry Master</span>
+                        <span class="pull-right-container">
+                           
+                        </span>
+                    </a>
+            </li>
+            <li class="active treeview menu-open">
+                <a routerLink="/admission">
+                    <i class="fa fa-id-card-o"></i>
+                    <span> Admission</span>
+                    <span class="pull-right-container">
+                       
+                    </span>
+                </a>
+            </li>
+            <li class="active treeview menu-open">
+                <a routerLink="/admissionList">
+                    <i class="fa fa-users"></i>
+                    <span> All Admission</span>
+                    <span class="pull-right-container">
+                       
+                    </span>
+                </a>
+            </li>
+          
+            <li class="active treeview menu-open">
+                <a routerLink="/dueList">
+                    <i class="fa fa-gg"></i>
+                    <span> Pay Installments</span>
+                    <span class="pull-right-container">
+                       
+                    </span>
+                </a>
+            </li>
+            <li class="active treeview menu-open">
+                <a routerLink="/home">
+                    <i class="fa fa-dashboard"></i>
+                    <span> Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                        <li routerLinkActive="active">
+                             <a data-toggle="modal" data-target="#myModal">
+                                    <i class="fa fa-file-pdf-o" style="font-size: larger;"></i> Admission
+                            </a>
+            
+                        </li>
+                        <li routerLinkActive="active">
+                                <a data-toggle="modal" data-target="#myModal1">
+                                        <i class="fa fa-file-pdf-o" style="font-size: larger;"></i> Total Collection
+                                </a>
+                        </li>
+                        <li routerLinkActive="active">
+                                <a data-toggle="modal" data-target="#expectedIncomeModal">
+                                        <i class="fa fa-file-pdf-o" style="font-size: larger;"></i> Expected Collection
+                                </a>
+                        </li>
+                </ul>
+            </li>
+        </ul>
+         <!--Menu2-->
+
+ </ul>
+        
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        
+    </section>
+    
+</div>
+<!--Footer Settings-->
+<!-- <div class="row" style="background-color: black; line-height: 1.9">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="background-color:black;">
+                <div style="color:white;text-align: center;"> Copyright @ 2018 Let's Speak. All Rights Reserved. Designed & Developed by AVICS</div>
+       </div>
+       
+</div> -->
+
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2018-2019
+        <a href="http://avics.co.in">Avics.co.in</a>.</strong> All rights reserved.
+</footer>
+
+
+
+    <!-- <p style="background-color: black;color: azure;text-align: center;margin-top: -9px;
+    height: 31px;">Avics.co.in    All rights reserved.</p> -->
+    <!-- <div class="row" style="background-color: black; line-height: 1.9">
+       
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="background-color:black;">
+        <div style="color:white;text-align: center;"> Copyright � 2018 Let's Speak. All Rights Reserved. Designed & Developed by AVICS</div>
+            
+        </div>
+        
+      </div> -->
+
+
+
+<!--Profile user form-->
+<div id="profileModel" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+                <h3 class="modal-title"><i class="fa fa-user-circle-o"></i> Profile</h3>
+            </div>
+            <div class="modal-body">
+                <app-profile></app-profile>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <form #admissionReportForm="ngForm">
+            <!-- (ngSubmit)="onSubmit()" -->
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Admission Report</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="fromDate">From Date</label>
+                        <input name="fromDate" [(ngModel)]="dateModel.fromDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <div class="form-group">
+                        <label for="toDate">To Date </label>
+                        <input name="toDate" [(ngModel)]="dateModel.toDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <!-- model : {{  dateModel.fromDate | date :'yyyy-MM-dd' }} -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)='onSubmit()' data-dismiss="modal" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <form #collectionReportForm="ngForm">
+            <!-- (ngSubmit)="onSubmitCollection()" -->
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Collection Report</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="fromDate">From Date</label>
+                        <input name="fromDate" [(ngModel)]="dateModel.fromDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <div class="form-group">
+                        <label for="toDate">To Date </label>
+                        <input name="toDate" [(ngModel)]="dateModel.toDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <!-- model : {{  dateModel.fromDate | date :'yyyy-MM-dd' }} -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)='onSubmitCollection()' data-dismiss="modal" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<div id="expectedIncomeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <form #collectionReportForm="ngForm">
+            <!-- (ngSubmit)="onSubmitCollection()" -->
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Expected Income Report</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="fromDate">From Date</label>
+                        <input name="fromDate" [(ngModel)]="dateModel.fromDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <div class="form-group">
+                        <label for="toDate">To Date </label>
+                        <input name="toDate" [(ngModel)]="dateModel.toDate" class="form-control" type="text" bsDatepicker [bsConfig]="datePickerConfig"
+                            placement="right" />
+                    </div>
+                    <!-- model : {{  dateModel.fromDate | date :'yyyy-MM-dd' }} -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)='onSubmitExpectedInocome()' data-dismiss="modal" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

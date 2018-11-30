@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="box" style="margin-top: 14px;">
+      <div class="box-header with-border">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <h3 class="box-title"> Add Course</h3>
+        <div class="box-tools pull-right">
+          <span>
+            <a [routerLink]="['/cs/cs-list']">
+              <i class="fa fa-times"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+                <div class="col-md-12">
+                  <form novalidate #modelForm="ngForm" class="form-horizontal" (ngSubmit)="addUpdateCourse()">
+                    <fieldset>
+
+
+                      <div class="form-group" [class.has-error]="CourseName.invalid && CourseName.touched" [class.has-success]="CourseName.valid">
+                        <label class="col-md-4 control-label" for="CourseName">Course Name</label>
+                        <div class="col-md-4">
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-book" style="font-size: initial;"></i>
+                            </div>
+                            <input id="CourseName" name="CourseName" type="text" [(ngModel)]="model.courseName" placeholder="Enter Course Name" class="form-control input-md"
+                              required #CourseName="ngModel">
+                          </div>
+                          <div class="help-block" *ngIf="CourseName.invalid && CourseName.touched">
+                            Course Name Is Required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="courseDiscription.invalid && courseDiscription.touched" [class.has-success]="courseDiscription.valid">
+                        <label class="col-md-4 control-label" for="courseDiscription">Description</label>
+                        <div class="col-md-4">
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-stack-exchange" aria-hidden="true" style="font-size: initial;"></i>
+                          </div>
+                       
+                          <textarea class="form-control" id="courseDiscription" name="courseDiscription" [(ngModel)]="model.courseDiscription" placeholder="About Course"
+                            #courseDiscription="ngModel" required></textarea>
+                          </div>
+                          <div class="help-block" *ngIf="courseDiscription.invalid && courseDiscription.touched">
+                            Course Discription Is Required
+                          </div>
+                        
+                        </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="durationInDays.invalid && durationInDays.touched" [class.has-success]="durationInDays.valid">
+                        <label class="col-md-4 control-label" for="durationInDays">Duration
+                          <!-- <i class="fa fa-fw fa-hourglass"></i>  -->
+                        </label>
+                        <div class="col-md-4">
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-clock-o" style="font-size: initial;"></i>
+                            </div>
+                            <input id="durationInDays" name="durationInDays" type="number" [(ngModel)]="model.durationInDays" placeholder="Duration In Hours"
+                              class="form-control input-md" #durationInDays="ngModel" required>
+                          </div>
+                          <div class="help-block" *ngIf="durationInDays.invalid && durationInDays.touched">
+                            Course Duration Is Required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="fees.invalid && fees.touched" [class.has-success]="fees.valid">
+                        <label class="col-md-4 control-label" for="fees">
+                          Fees
+                        </label>
+                        <div class="col-md-4">
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-fw fa-rupee" style="font-size: initial;"></i>
+                            </div>
+                            <input id="fees" name="fees" type="number" [(ngModel)]="model.fees" placeholder="Enter Fees" class="form-control input-md"
+                              #fees="ngModel" required>
+                            <!-- <i class="fa fa-fw fa-rupee"></i> -->
+                          </div>
+                          <div class="help-block" *ngIf="fees.invalid && fees.touched">
+                            Fee Is Required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group" [class.has-error]="maxDiscount.invalid && maxDiscount.touched" [class.has-success]="maxDiscount.valid">
+                        <label class="col-md-4 control-label" for="maxDiscount">Maximum Allow Discount
+
+                        </label>
+                        <div class="col-md-4">
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-percent" aria-hidden="true" style="font-size: small;"></i>
+                            </div>
+                            <input id="maxDiscount" name="maxDiscount" type="number" [(ngModel)]="model.maxDiscount" placeholder="Enter Discount" class="form-control input-md"
+                              #maxDiscount="ngModel" required>
+                          </div>
+                          <div class="help-block" *ngIf="maxDiscount.invalid && maxDiscount.touched">
+                            Discount Is Required
+                          </div>
+                        </div>
+                      </div>
+                   
+                    
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-4">
+                          <button title="{{ button == 'Update' ? 'Update' : 'Add' }}" type="submit" [disabled]="modelForm.invalid" class="btn btn-primary">{{button}}</button>
+                          &nbsp; &nbsp;
+                          <button title="{{ button == 'Update' ? 'Cancel' : 'Clear' }}" type="{{ button == 'Update' ? 'button' : 'reset' }}" (click)="Cancel()"
+                            class="btn btn-danger">{{ button == 'Update' ? 'Cancel' : 'Clear' }}</button>
+                          <!-- <button  type= "button"  class="btn btn-danger">Cancel</button> -->
+                        </div>
+                      </div>
+                      <br><br><br><br><br><br>
+                      <!-- <div class="box-tools pull-right">
+                          <span>
+                              <a class="btn btn-block btn-danger" title="clear" [routerLink]="['/cs/cs-list']">
+                                   Cancel
+                              </a>
+                          </span>
+                        </div> -->
+
+                    </fieldset>
+                  </form>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- ./box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+</div>

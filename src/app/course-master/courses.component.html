@@ -1,0 +1,154 @@
+<router-outlet></router-outlet>
+<!-- <div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Course Master</h3>
+        <div class="box-tools pull-right">
+          <span>
+            <a [routerLink]="['/cs/cs-add']">
+              <i class="fa fa-fw fa-plus"></i> Add New Course
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div [ngClass]="'box'">
+  <div class="container">
+      <nav [ngClass]="'parent-menu'">
+          <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a [routerLink]="['/cs/cs-list']" routerLinkActive="active">Courses</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/cs/cs-add']" routerLinkActive="active">Add New Course</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+      <div>
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="col-md-12  col-md-offset-0">
+      <form #modelForm="ngForm" class="form-horizontal" (ngSubmit)="addUpdateCourse()">
+        <fieldset>
+
+          <legend>Course Master</legend>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="CourseName">Course Name</label>
+            <div class="col-md-4">
+              <input id="CourseName" name="CourseName" type="text" [(ngModel)]="model.courseName" placeholder="Enter Course Name" class="form-control input-md"
+                required="">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="courseDiscription">Discription</label>
+            <div class="col-md-4">
+              <textarea class="form-control" id="courseDiscription" name="courseDiscription" [(ngModel)]="model.courseDiscription" placeholder="About Course" ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="durationInDays">Duration</label>
+            <div class="col-md-4">
+              <input id="durationInDays" name="durationInDays" type="text" [(ngModel)]="model.durationInDays" placeholder="Duration In Days"
+                class="form-control input-md" required="">
+
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="fees">Fees</label>
+            <div class="col-md-4">
+              <input id="fees" name="fees" type="text" [(ngModel)]="model.fees" placeholder="Enter Fees" class="form-control input-md"
+                required="">
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="maxDiscount">Maximum Allow Discount</label>
+            <div class="col-md-4">
+              <input id="maxDiscount" name="maxDiscount" type="text" [(ngModel)]="model.maxDiscount" placeholder="Enter Discount" class="form-control input-md">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+              <button id="" name="" class="btn btn-primary" type="submit">{{button}}</button>
+              <button id="button2id" name="button2id"  type= "reset"  class="btn btn-danger">Clear</button>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="col-md-12  col-md-offset-0">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Course Name</th>
+            <th>courseDiscription</th>
+            <th>duration</th>
+            <th>fees</th>
+            <th>maxDiscount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let course of courses">
+            <tr>
+              <td> {{ course.cid}} </td>
+              <td> {{ course.courseName }} </td>
+              <td> {{ course.courseDiscription }} </td>
+              <td> {{ course.durationInDays }} </td>
+              <td> {{ course.fees }} </td>
+              <td> {{ course.maxDiscount }} </td>
+              
+              <td><button id="button1id" name="button1id" (click)="getRecordByID(course.cid)" class="btn btn-success">Edit</button></td>
+              <td><button id="button2id" name="button2id" (click)="deleteCourse(course.cid)" class="btn btn-danger">Delete</button></td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="!courses">
+            <td colspan="5">
+              Loading data please Wait...
+            </td>
+          </tr>
+          <tr *ngIf="courses && courses.length==0">
+            <td colspan="5">No Courses to display </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->

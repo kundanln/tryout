@@ -1,0 +1,59 @@
+.table>tbody>tr>td, .table>tfoot>tr>td {
+    border-top: none;
+}
+
+table {
+    border-spacing: 0;  
+    border-collapse: inherit;
+}
+.table>tbody>tr>td{ padding: 3px;
+}
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 400px;
+    overflow-y: auto;
+}
+.modal-footer{
+    overflow-y: auto;
+}
+
+
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid red;
+    border-bottom-color: transparent;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid red;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab-title {
+    color: red;
+    background-color: aqua;
+  }
+
+  .nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid red;
+    border-radius: 4px 4px 0 0;
+}
+
+.title{
+    background: #4CAF50;
+}

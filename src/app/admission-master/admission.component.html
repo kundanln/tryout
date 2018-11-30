@@ -1,0 +1,682 @@
+<!-- notifyToAdmission from search component emits data to admission
+and pass that data to NotifyFromSearch as argument and 
+set that data to  varibale dataFromSearch in admission component to use further -->
+<div class="panel">
+    <div class="box-header with-border">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <h3 class="box-title">Admission</h3>
+        <div class="box-tools pull-right">
+            <!-- <span>
+                    <a [routerLink]="['/enquiry/enq-list']">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </span> -->
+                
+        </div>
+    </div>
+
+  
+
+    <div class="box-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                     
+                <form novalidate #modelForm="ngForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <ngb-tabset #tabRef="ngbTabset">
+                            
+                        <!-- <tab title="Personel Details"> -->
+                        <ngb-tab title="Personel Details" id="tab1">
+                            <ng-template ngbTabContent>
+                                    
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                           
+                                        <!-- <h3>Student Personal Details</h3> -->
+
+                                        <!-- personal details form -->
+                                        <div class="col-md-12">
+              <search-enquiry (notifyToAdmission)="NotifyFromSearch($event)"> </search-enquiry> 
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['firstName'].invalid && userForm.controls['firstName'].touched"
+                                                    [class.has-success]="userForm.controls['firstName'].valid">
+                                                    <label>First Name</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control input-md"
+                                                            formControlName="firstName" [(ngModel)]="firstName"
+                                                            [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['firstName'].hasError('required')  && userForm.controls['firstName'].touched">
+                                                        First Name Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['middleName'].invalid && userForm.controls['middleName'].touched"
+                                                    [class.has-success]="userForm.controls['middleName'].valid">
+                                                    <label class="control-label">Middle Name</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control input-md"
+                                                            formControlName="middleName" [(ngModel)]="middleName"
+                                                            [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['middleName'].hasError('required')  && userForm.controls['middleName'].touched">
+                                                        Middle Name Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched"
+                                                    [class.has-success]="userForm.controls['lastName'].valid">
+                                                    <label class="control-label">Last Name</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" formControlName="lastName"
+                                                            [(ngModel)]="lastName" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['lastName'].hasError('required')  && userForm.controls['lastName'].touched">
+                                                        Last Name Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['address'].invalid && userForm.controls['address'].touched"
+                                                    [class.has-success]="userForm.controls['address'].valid">
+                                                    <label class="control-label">Address</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-home" aria-hidden="true" style="font-size: large;"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" formControlName="address"
+                                                            [(ngModel)]="address" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['address'].hasError('required')  && userForm.controls['address'].touched">
+                                                        Address Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['mobileNumber'].invalid && userForm.controls['mobileNumber'].touched"
+                                                    [class.has-success]="userForm.controls['mobileNumber'].valid">
+                                                    <label class="control-label">Mobile Number</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-mobile" style="font-size: large;"></i>
+                                                        </div>
+                                                        <input type="number" class="form-control" formControlName="mobileNumber"
+                                                            [(ngModel)]="mobileNumber" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['mobileNumber'].hasError('required')  && userForm.controls['mobileNumber'].touched">
+                                                        Mobile Number Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['emailAddress'].invalid && userForm.controls['emailAddress'].touched"
+                                                    [class.has-success]="userForm.controls['emailAddress'].valid">
+                                                    <label class="control-label">Email Address</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="email" class="form-control" formControlName="emailAddress"
+                                                            [(ngModel)]="emailAddress" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['emailAddress'].hasError('required')  && userForm.controls['emailAddress'].touched">
+                                                        Email Is Required
+                                                    </span>
+                                                    <span class="help-block" *ngIf="userForm.controls['emailAddress'].hasError('pattern')  && userForm.controls['emailAddress'].touched">
+                                                        Email Is Invalid
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['organization'].invalid && userForm.controls['organization'].touched"
+                                                    [class.has-success]="userForm.controls['organization'].valid">
+                                                    <label class="control-label">Organization</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-building" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" formControlName="organization"
+                                                            [(ngModel)]="organization" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['organization'].hasError('required')  && userForm.controls['organization'].touched">
+                                                        Organization Field Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group" [class.has-error]="userForm.controls['studentProfession'].invalid && userForm.controls['studentProfession'].touched"
+                                                    [class.has-success]="userForm.controls['studentProfession'].valid">
+                                                    <label class="control-label">Student Profession</label>
+                                                    <div class="input-group user">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" formControlName="studentProfession"
+                                                            [(ngModel)]="studentProfession" [readonly]="previewForm" />
+                                                    </div>
+                                                    <span class="help-block" *ngIf="userForm.controls['studentProfession'].hasError('required')  && userForm.controls['studentProfession'].touched">
+                                                        Student Profession Field Is Required
+                                                    </span>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label" for=""></label>
+                                    <div class="col-md-4">
+
+                                        <button class="btn btn-primary" (click)="tabRef.select('tab2')">Next</button>
+
+                                    </div>
+                                </div>
+
+
+
+                            </ng-template>
+                        </ngb-tab>
+                        
+
+                        <!--Registration details form  -->
+                        <!-- <div class="tab-pane" id="glyphicons"> -->
+                        <!-- <tab title="Registration Details"> -->
+                        <ngb-tab title="Registration Details" id="tab2">
+                            <ng-template ngbTabContent>
+                                <div class="panel panel-default" formArrayName="registrationModelList">
+                                    <!-- <div *ngFor="let reg of userForm.controls.registrationModelList.controls; let r=index;"> -->
+                                    <ng-container *ngFor="let reg of userForm.get('registrationModelList').controls; let r=index;">
+                                        <div class="panel-body" [formGroupName]="r">
+                                            <!-- <div class="tab"> -->
+                                            <!-- <h3>Registration Details </h3> -->
+
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.course.invalid && userForm.controls.registrationModelList.controls['0'].controls.course.touched"
+                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.course.valid">
+                                                        <label>Course Name</label>
+                                                        <div class="input-group user">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-book" aria-hidden="true"></i>
+                                                            </div>
+                                                            <select class="form-control" formControlName="course"
+                                                                [(ngModel)]="course" (change)="onSelect(course)">
+                                                                <option *ngFor="let course of courseList" [ngValue]="course">
+                                                                    {{course.courseName}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="help-block" *ngIf="userForm.controls.registrationModelList.controls['0'].controls.course.hasError('required')  && userForm.controls.registrationModelList.controls['0'].controls.course.touched">
+                                                            Select Course
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.fees.invalid && userForm.controls.registrationModelList.controls['0'].controls.fees.touched"
+                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.fees.valid">
+                                                        <label>Course Fees</label>
+                                                        <div class="input-group user">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-fw fa-rupee" style="font-size: initial;"></i>
+                                                            </div>
+                                                            <input class="form-control" type="number" formControlName="fees"
+                                                                [(ngModel)]="fees" readonly />
+                                                        </div>
+                                                        <span class="help-block" *ngIf="userForm.controls.registrationModelList.controls['0'].controls.fees.hasError('required')  && userForm.controls.registrationModelList.controls['0'].controls.fees.touched">
+                                                            Fee Is Required
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.hasError('greaterThan') && userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.invalid && userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.touched"
+                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.valid && userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.touched">
+                                                        <label>Discount</label>
+                                                        <div class="input-group user">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-percent" aria-hidden="true"></i>
+                                                            </div>
+                                                            <input class="form-control" type="number" formControlName="percentageDiscount"
+                                                                [(ngModel)]="percentageDiscount" placeholder='max discount {{ maxDiscount }} %'
+                                                                (keyup.enter)="feesAfterDiscountFun(percentageDiscount)"
+                                                                (blur)="feesAfterDiscountFun(percentageDiscount)"
+                                                                [readonly]="previewForm" />
+                                                        </div>
+                                                        <span class="help-block" *ngIf="userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.hasError('greaterThan') && userForm.controls.registrationModelList.controls['0'].controls.percentageDiscount.touched ">
+                                                            Plz Enter Value Less Than {{maxDiscount}}
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Fees After Discount</label>
+                                                        <div class="input-group user">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-fw fa-rupee" style="font-size: initial;"></i>
+                                                            </div>
+                                                            <input class="form-control" type="number" formControlName="feesAfterDiscount"
+                                                                [(ngModel)]="feesAfterDiscount" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- </div> -->
+                                    </ng-container>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for=""></label>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-primary" (click)="tabRef.select('tab1')">Previous</button>
+                                                                               
+                                        &nbsp;
+                                        <button title="Clear" type="reset" (click)="onReset()" class="btn btn-danger">Clear</button>
+                                        &nbsp;
+                                        <button class="btn btn-primary" (click)="tabRef.select('tab3')">Next</button>
+                                    </div>
+                                </div>
+
+                                <br><br><br><br><br><br><br><br>
+                            </ng-template>
+                        </ngb-tab>
+                        
+                        <ngb-tab title="Installment Details" id="tab3">
+                            <ng-template ngbTabContent>
+                                <div class="panel panel-default" formArrayName="registrationModelList">
+                                    <!-- <div *ngFor="let reg of userForm.controls.registrationModelList.controls; let r=index;"> -->
+                                    <ng-container *ngFor="let reg of userForm.get('registrationModelList').controls; let r=index;">
+                                        <div class="panel-body" [formGroupName]="r">
+                                                <div class="col-md-12">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.numOfInstallment.invalid && userForm.controls.registrationModelList.controls['0'].controls.numOfInstallment.touched"
+                                                                [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.numOfInstallment.valid">
+                                                                <label for="numOfInstallment">Number Of Installment</label>
+                                                                <div class="input-group user">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-list-ol" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <select id="numOfInstallment" name="numOfInstallment"
+                                                                        [(ngModel)]="numOfInstallment" (change)="createInstallmentTable(numOfInstallment)"
+                                                                        class="form-control" formControlName="numOfInstallment"
+                                                                        [disabled]="previewForm">
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                    </select>
+                                                                </div>
+                                                                <span class="help-block" *ngIf="userForm.controls.registrationModelList.controls['0'].controls.numOfInstallment.hasError('required')  && userForm.controls.registrationModelList.controls['0'].controls.numOfInstallment.touched">
+                                                                    Select Number Of Installment
+                                                                </span>
+                                                            </div>
+        
+                                                            <!-- table  -->
+                                                            <div *ngIf="numOfInstallment > 0">
+                                                                <div class="table-responsive">
+                                                                    <table formArrayName="installmentDetail" class="table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>
+                                                                                    {{column1}}
+                                                                                </th>
+                                                                                <th>
+                                                                                    {{column2}}
+                                                                                </th>
+                                                                                <!-- <th>
+                                                                        {{column3}}
+                                                                    </th> -->
+                                                                                <th>
+                                                                                    {{column4}}
+                                                                                </th>
+                                                                                <th>
+                                                                                    {{column5}}
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+        
+                                                                        <tbody *ngFor="let installment of userForm.controls.registrationModelList.controls[r].controls.installmentDetail.controls; let i=index;"
+                                                                            [formGroupName]="i">
+                                                                            <!-- <ng-container > -->
+                                                                            <!-- <my-app11  [group]="userForm.controls.registrationModelList.controls[r].controls.installmentDetail.controls[i]" ></my-app11> -->
+                                                                            <!-- </ng-container> -->
+        
+                                                                            <ng-container>
+                                                                                <tr>
+                                                                                    <td class="col-md-2" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentNum.invalid && userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentNum.touched"
+                                                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentNum.valid">
+                                                                                        <input type="number" class="form-control"
+                                                                                            formControlName="installmentNum"
+                                                                                            readonly />
+                                                                                    </td>
+                                                                                    <td class="col-md-2" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentAmount.invalid && userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentAmount.touched"
+                                                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentAmount.valid">
+                                                                                        <input type="number" class="form-control"
+                                                                                            formControlName="installmentAmount"
+                                                                                            [readonly]="previewForm" />
+                                                                                    </td>
+        
+                                                                                    <td class="col-md-2" [class.has-error]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentDate.invalid && userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentDate.touched"
+                                                                                        [class.has-success]="userForm.controls.registrationModelList.controls['0'].controls.installmentDetail.controls[i].controls.installmentDate.valid">
+                                                                                        <input type="text" bsDatepicker
+                                                                                            [bsConfig]="datePickerConfig"
+                                                                                            placement="right" class="form-control"
+                                                                                            placeholder="yyyy/mm/dd"
+                                                                                            formControlName="installmentDate">
+                                                                                    </td>
+                                                                                    <td class="col-md-6">
+                                                                                        <input type="text" class="form-control"
+                                                                                            formControlName="comment"
+                                                                                            [readonly]="previewForm" />
+                                                                                    </td>
+        
+                                                                                </tr>
+                                                                            </ng-container>
+        
+                                                                        </tbody>
+        
+                                                                    </table>
+        
+        
+                                                                </div>
+        
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label" for=""></label>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary" (click)="tabRef.select('tab2')">Previous</button>
+                                            &nbsp;
+                                            <button title="Save" [disabled]="userForm.invalid" type="button" class="btn btn-primary"
+                                                (click)="save()">save </button>
+                                            &nbsp;
+                                            <button title="Clear" type="reset" (click)="onReset()" class="btn btn-danger">Clear</button>
+                                        </div>
+                                    </div>
+                            </ng-template>
+                        </ngb-tab>
+
+                    </ngb-tabset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>
+                        <h3> Admisssions Preview</h3>
+                    </span>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+
+                                <div class="box-body pad table-responsive">
+                                    <div class="tab">
+                                        <!-- personel Details -->
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-fw fa-user"></i>
+                                            <h3 class="box-title">Student Personal Details</h3>
+                                        </div>
+
+                                        <div class="box-body pad table-responsive">
+
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Name</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.firstName +" "+admissionModel.middleName+"
+                                                    "+admissionModel.lastName }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Address</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.address }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Mobile Number</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.mobileNumber}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 ">
+                                                <label class="col-md-2 control-label">Email</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.emailAddress}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Organization</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.organization}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12  col-md-offset-0">
+                                                <label class="col-md-2 control-label">Profession</label>
+                                                <div class="col-md-5">
+                                                    {{ admissionModel.studentProfession}}
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- registraion Details -->
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-fw fa-registered"></i>
+                                            <h3 class="box-title">Registration Details</h3>
+                                        </div>
+                                        <div class="box-body pad table-responsive">
+
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Course</label>
+                                                <div class="col-md-5">
+                                                    {{ registrationModel.courseName }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Fees</label>
+                                                <div class="col-md-5">
+                                                    {{ registrationModel.fees }}
+                                                    <span>
+                                                        <i class="fa fa-fw fa-rupee"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Discount</label>
+                                                <div class="col-md-5">
+                                                    {{ registrationModel.percentageDiscount == null ? 0 :
+                                                    registrationModel.percentageDiscount }}
+                                                    <span>
+                                                        <i class="fa fa-percent" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Fees To Pay</label>
+                                                <div class="col-md-5">
+                                                    {{ registrationModel.feesAfterDiscount }}
+                                                    <span>
+                                                        <i class="fa fa-fw fa-rupee"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="col-md-2 control-label">Installments</label>
+                                                <div class="col-md-5">
+                                                    {{ registrationModel.numOfInstallment }}
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- installment Details -->
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-list-alt"></i>
+                                            <h3 class="box-title">Installment Details</h3>
+                                        </div>
+                                        <div class="box-body pad table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Number
+                                                        </th>
+                                                        <th>
+                                                            Amount
+                                                        </th>
+                                                        <th>
+                                                            Date
+                                                        </th>
+                                                        <th>
+                                                            Comment
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container *ngFor="let model of installmentModelList">
+                                                        <tr>
+                                                            <td>
+                                                                {{ model.installmentNum }}
+                                                            </td>
+                                                            <td>
+                                                                {{ model.installmentDate | date }}
+                                                            </td>
+                                                            <td>
+                                                                {{ model.installmentAmount }}
+                                                            </td>
+                                                            <td>
+                                                                {{ model.comment }}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button> -->
+                        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Edit</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+    <!-- /.modal !-->
+
+
+    <!-- <script>
+            alert("hiii");
+            var currentTab = 0; // Current tab is set to be the first tab (0)
+            showTab(currentTab); // Display the crurrent tab
+    
+            function showTab(n) {
+                // This function will display the specified tab of the form...
+                var x = document.getElementsByClassName("tab");
+                x[n].style.display = "block";
+                //... and fix the Previous/Next buttons:
+                if (n == 0) {
+                    document.getElementById("prevBtn").style.display = "none";
+                } else {
+                    document.getElementById("prevBtn").style.display = "inline";
+                }
+                if (n == (x.length - 1)) {
+                    document.getElementById("nextBtn").innerHTML = "Submit";
+                } else {
+                    document.getElementById("nextBtn").innerHTML = "Next";
+                }
+                //... and run a function that will display the correct step indicator:
+                fixStepIndicator(n)
+            }
+    
+            function nextPrev(n) {
+                // This function will figure out which tab to display
+                var x = document.getElementsByClassName("tab");
+                // Exit the function if any field in the current tab is invalid:
+                if (n == 1 && !validateForm()) return false;
+                // Hide the current tab:
+                x[currentTab].style.display = "none";
+                // Increase or decrease the current tab by 1:
+                currentTab = currentTab + n;
+                // if you have reached the end of the form...
+                if (currentTab >= x.length) {
+                    // ... the form gets submitted:
+                    document.getElementById("regForm").submit();
+                    return false;
+                }
+                // Otherwise, display the correct tab:
+                showTab(currentTab);
+            }
+    
+            function fixStepIndicator(n) {
+                // This function removes the "active" class of all steps...
+                var i, x = document.getElementsByClassName("step");
+                for (i = 0; i < x.length; i++) {
+                    x[i].className = x[i].className.replace(" active", "");
+                }
+                //... and adds the "active" class on the current step:
+                x[n].className += " active";
+            }
+        </script> -->
