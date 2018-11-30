@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Enquiry, Course, UserModel } from "../../_models";
 import { DatePipe } from "@angular/common";
 import { NgForm } from "@angular/forms";
-import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
+//import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
 import { CourseService } from "../../_services/course.service";
 
 @Component({
