@@ -11,7 +11,7 @@ export class CourseService {
      // Inject HttpClient into your component .
     constructor(private _http: HttpClient,private _baseService:BaseserviceService) { }
    
-    burl:String="https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest";
+   // burl:String="https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest";
 
     getAll() {
                // Make the GET HTTP request:
@@ -20,19 +20,19 @@ export class CourseService {
     }
 
     getById(id: number) {
-        return this._http.get(this.burl+"/courses/getById/id/"+ id);
+        return this._http.get(this._baseService.BaseUrl()+"/courses/getById/id/"+ id);
     }
 
     create(course: Course) {
-        return this._http.post(this.burl+'/courses/add',course);
+        return this._http.post(this._baseService.BaseUrl()+'/courses/add',course);
     }
 
     update(course: Course) {
-        return this._http.put(this.burl+'/courses/update/id/'+ course.cid, course);
+        return this._http.put(this._baseService.BaseUrl()+'/courses/update/id/'+ course.cid, course);
     }
 
     delete(id: number) {
-        return this._http.delete(this.burl+'/courses/delete/id/' + id);
+        return this._http.delete(this._baseService.BaseUrl()+'/courses/delete/id/' + id);
     }
     
 }

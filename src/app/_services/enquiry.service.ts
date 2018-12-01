@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Enquiry } from "../_models";
+import { BaseserviceService } from "./baseservice.service";
 
 // import "rxjs/add/operator/map";
 
@@ -9,26 +10,26 @@ import { Enquiry } from "../_models";
 
 export class EnquiryService {
 
-    constructor(private _http: HttpClient) { }
+    constructor(private _http: HttpClient,private _baseService:BaseserviceService) { }
 
-    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/enquiry";
+    //baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/enquiry";
 
     getAll() {
 
         // Make the GET HTTP request:
-        return this._http.get(this.baseUrl + "/getAll");
+        return this._http.get(this._baseService.BaseUrl() + "/getAll");
         // return this._http.get<User[]>('/api/users');
 
     }
     getById(id: number) {
-        return this._http.get(this.baseUrl + "/getById/id/" + id);
+        return this._http.get(this._baseService.BaseUrl() + "/getById/id/" + id);
     }
     create(enquiry: Enquiry) {
 
-        return this._http.post(this.baseUrl + '/add', enquiry);
+        return this._http.post(this._baseService.BaseUrl() + '/add', enquiry);
     }
     update(enquiry: Enquiry) {
         //console.log("at enquiry service ",enquiry);
-        return this._http.put(this.baseUrl + '/update/id/' + enquiry.enqId, enquiry);
+        return this._http.put(this._baseService.BaseUrl() + '/update/id/' + enquiry.enqId, enquiry);
     }
 }
