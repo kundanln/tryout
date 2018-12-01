@@ -8,7 +8,7 @@ import "rxjs/add/operator/map";
 export class ReportService {
     constructor(private _http: HttpClient) { }
 
-    baseUrl: string = "http://localhost:8080/CMS_Hibernate_Backend_V0.1/rest/report";
+    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/report";
 
     getAllAdmissionreport(fromDate : string ,toDate :string) {
         // Make the GET HTTP request:

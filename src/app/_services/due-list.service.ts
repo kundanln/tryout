@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 
-import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { InstallmentDetail } from "../_models";
 
@@ -12,7 +11,7 @@ import { InstallmentDetail } from "../_models";
 export class DueListService {
     constructor(private _http: HttpClient) { }
 
-    baseUrl: string = "http://localhost:8080/CMS_Hibernate_Backend_V0.1/rest/Api";
+    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/Api";
 
     getAll(installmentTillDate : string) {
         console.log("inst till  date  :> ",installmentTillDate);

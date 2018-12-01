@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 
-import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
 
@@ -10,7 +9,7 @@ import "rxjs/add/operator/map";
 export class FollowUpService {
     constructor(private _http: HttpClient) { }
 
-    baseUrl: string = "http://localhost:8080/CMS_Hibernate_Backend_V0.1/rest/";
+    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/";
 
     getAllEnquiryFollowUp(today : string) {
 

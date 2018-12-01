@@ -11,7 +11,7 @@ export class EnquiryService {
 
     constructor(private _http: HttpClient) { }
 
-    baseUrl: string = "http://localhost:8080/CMS_Hibernate_Backend_V0.1/rest/enquiry";
+    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/enquiry";
 
     getAll() {
 

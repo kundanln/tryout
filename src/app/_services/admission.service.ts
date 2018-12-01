@@ -10,7 +10,7 @@ import { PreRequireInvoiceModel } from "../_models/pre-require-invoice.model";
 export class AddmissionService {
     constructor(private _http: HttpClient) { }
 
-    baseUrl: string = "http://localhost:8080/CMS_Hibernate_Backend_V0.1/rest/addmission";
+    baseUrl: string = "https://cms-eclipse.herokuapp.com/CMS_Hibernate_Backend_V0.11/rest/addmission";
 
 
     create(record: any) {
